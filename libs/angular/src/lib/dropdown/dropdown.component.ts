@@ -178,7 +178,7 @@ export class NggDropdownComponent
     }
   }
 
-  private updateValue(option: any) {
+  private updateValue(option: any): void {
     this._value = option
     this.valueChange.emit(option)
     this.onChangeFn?.(option)

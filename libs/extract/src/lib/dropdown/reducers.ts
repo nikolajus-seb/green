@@ -278,26 +278,37 @@ export const blur = (dropdown: AbstractDropdown): AbstractDropdown =>
   reduce(dropdown, {
     isTouched: dropdown.isTouched || !dropdown.isOpen,
   } as Partial<AbstractDropdown>)
+
 export const active = (
   dropdown: AbstractDropdown,
   isActive: boolean
 ): AbstractDropdown =>
   reduce(dropdown, { isActive } as Partial<AbstractDropdown>)
+
 export const loop = (
   dropdown: AbstractDropdown,
   isLooping: boolean
 ): AbstractDropdown =>
   reduce(dropdown, { isLooping } as Partial<AbstractDropdown>)
+
 export const keypress = (
   dropdown: AbstractDropdown,
   key: string,
   event: KeyboardEvent
 ): AbstractDropdown | undefined => {
-  const opts = dropdown.options
+  const opts = dropdown.options.filter((option) =>
+    !option.classes.includes('hidden')
+  )
+  console.log(opts)
+  console.log('dropdown options', dropdown.options)
   let action
+
+  const searchInputElement = document.querySelector('#dropdown-search-input')
+
   switch (key) {
     //case ' ':
     //  action = toggle(dropdown)
+
     //  break
     case 'Escape':
       if (dropdown.isOpen) action = close(dropdown)
@@ -324,14 +335,23 @@ export const keypress = (
       action = open(highlight(dropdown, opts[opts.length - 1]))
       break
     case ' ':
+      if (searchInputElement !== document.activeElement) {
+        console.log(searchInputElement)
+        const activeOption = opts.find((option) => option.active)
+        action =
+          dropdown.isOpen && activeOption
+            ? dropdown.isMultiSelect
+              ? close(dropdown)
+              : close(select(dropdown, activeOption))
+            : toggle(dropdown)
+      }
+      break
     case 'Enter':
       // eslint-disable-next-line no-case-declarations
       const activeOption = opts.find((option) => option.active)
       action =
         dropdown.isOpen && activeOption
-          ? dropdown.isMultiSelect && key === ' '
-            ? select(dropdown, activeOption)
-            : dropdown.isMultiSelect
+          ? dropdown.isMultiSelect
             ? close(dropdown)
             : close(select(dropdown, activeOption))
           : toggle(dropdown)
