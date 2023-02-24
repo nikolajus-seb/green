@@ -152,11 +152,11 @@ $_border-color: var(--sg-border-color);
 }
 
 @mixin table-list() {
-  @debug 'table-list mixin is deprecated, use the add-list-group mixin instead';
+  @warn 'table-list mixin is deprecated, use the add-list-group mixin instead';
   @include add-list-group()
 }
 
 @mixin table-list-caption() {
-  @debug 'table-list-caption mixin is deprecated, use the add-list-group-caption mixin instead';
+  @warn 'table-list-caption mixin is deprecated, use the add-list-group-caption mixin instead';
   @include add-list-group-caption()
 }

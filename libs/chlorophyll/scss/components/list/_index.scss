@@ -18,11 +18,11 @@ ul.check {
 }
 
 .table-list-caption {
-  @include mixins.table-list-caption();
+  @include mixins.add-list-group-caption();
 }
 
 figure dl {
-  @include mixins.table-list();
+  @include mixins.add-list-group();
 }
 
 dl.gds-list {
