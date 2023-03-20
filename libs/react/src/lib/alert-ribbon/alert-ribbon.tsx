@@ -1,4 +1,5 @@
 import React, { AriaAttributes, ReactNode, useEffect, useState } from 'react'
+import classNames from 'classnames'
 import { AlertRibbonType } from '@sebgroup/extract'
 import { SquareInfo, SquareExclamation, Check } from '../icons'
 
@@ -61,14 +62,16 @@ export function AlertRibbon({
     }
   }
 
+  const componentClassnames = classNames(['gds-alert-ribbon', type])
+
   return (
-    <div className={`alert-ribbon ${type}`} role={role} aria-live={ariaLive}>
+    <div className={componentClassnames} role={role} aria-live={ariaLive}>
       <i aria-hidden="true">{renderIcon()}</i>
-      <div className="alert-ribbon__content">
+      <div className="gds-alert-ribbon__content">
         {header && React.isValidElement(header) ? (
           header
         ) : (
-          <span className="header">{header}</span>
+          <div className="gds-alert-ribbon__heading">{header}</div>
         )}
         <p>{children}</p>
       </div>
@@ -84,7 +87,7 @@ export function AlertRibbon({
           <i></i>
         </button>
       )}
-      {footer && <div className="alert-ribbon__footer"> {footer} </div>}
+      {footer && <div className="gds-alert-ribbon__footer"> {footer} </div>}
     </div>
   )
 }

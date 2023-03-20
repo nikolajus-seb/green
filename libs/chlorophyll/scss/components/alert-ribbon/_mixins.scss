@@ -86,7 +86,7 @@ $link-outline-color: hsla( var(--sg-intent-neutral-hsl-contrast), link.$outline-
   }
 
   // content
-  > div:not(.alert-ribbon__footer), .alert-ribbon__content {
+  > div:not(.alert-ribbon__footer, .gds-alert-ribbon__footer), .alert-ribbon__content, .gds-alert-ribbon__content {
     grid-area: content;
     max-width: 75ch;
 
@@ -99,7 +99,8 @@ $link-outline-color: hsla( var(--sg-intent-neutral-hsl-contrast), link.$outline-
     h3,
     h4,
     h5,
-    .header {
+    .header,
+    .gds-alert-ribbon__heading {
       display: inline;
       font-size: 1rem;
       font-weight: 500;
@@ -138,7 +139,7 @@ $link-outline-color: hsla( var(--sg-intent-neutral-hsl-contrast), link.$outline-
     }
 
     @include common.media-breakpoint-up('sm') {
-      + footer, .alert-ribbon__footer {
+      + footer, .alert-ribbon__footer, .gds-alert-ribbon__footer {
         @include common.margin-top(4);
       }
     }
@@ -153,7 +154,7 @@ $link-outline-color: hsla( var(--sg-intent-neutral-hsl-contrast), link.$outline-
   }
 
   // footer
-  > footer, .alert-ribbon__footer {
+  > footer, .alert-ribbon__footer, .gds-alert-ribbon__footer {
     grid-area: footer;
     align-self: end;
     @include common.media-breakpoint-only('xs') {
@@ -223,7 +224,7 @@ $link-outline-color: hsla( var(--sg-intent-neutral-hsl-contrast), link.$outline-
     fill: $color;
   }
 
-  > footer, .alert-ribbon__footer {
+  > footer, .alert-ribbon__footer, .gds-alert-ribbon__footer {
     > a,
     > button,
     > button[type=button],

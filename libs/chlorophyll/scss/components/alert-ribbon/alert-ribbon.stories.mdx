@@ -16,7 +16,7 @@ export const Template = ({
       </svg>
     </i>
     <div>
-      ${heading ? `<h3>${heading}</h3>` : ''}
+      ${heading ? `<div class="gds-alert-ribbon__heading">${heading}</div>` : ''}
       <p>
         ${content}
         ${link ? `<a href="#">${link}</a>.` : ''}
@@ -29,14 +29,14 @@ export const Template = ({
     }
     ${
       button || primaryButton
-        ? `<footer>
+        ? `<div class="gds-alert-ribbon__footer">
         ${button ? `<button type="button">${button}</button>` : ''}
         ${
           primaryButton
             ? `<button type="button" class="primary">${primaryButton}</button>`
             : ''
         }
-     </footer>`
+     </div>`
         : ''
     }
   </div>
@@ -93,22 +93,22 @@ export const Template = ({
 An alert ribbon is a message used to inform the user about the state of a system, page or function. Icons and color indicate the type and urgency of the information within the message.
 
 <Canvas>
-  <div role="alert">
-    <div>
+  <div>
+    <div class="gds-alert-ribbon">
       <p>Neutral (no class)</p>
     </div>
   </div>
-  <div role="alert" class="success">
+  <div class="gds-alert-ribbon success">
     <div>
       <p>Success</p>
     </div>
   </div>
-  <div role="alert" class="warning">
+  <div class="gds-alert-ribbon warning">
     <div>
       <p>Warning</p>
     </div>
   </div>
-  <div role="alert" class="danger">
+  <div class="gds-alert-ribbon danger">
     <div>
       <p>Danger</p>
     </div>
@@ -120,17 +120,20 @@ An alert ribbon is a message used to inform the user about the state of a system
 Alerts can contain the following elements:
 
 **Content**<br/>
-Content should be placed inside `<div>...</div>` and may in turn contain a heading `<h1>, <h2>, <h3>, <h4>, <h5>` and a `<p>` with additional content like links etc.
+Content should be placed inside `<div class="gds-alert-ribbon__content">...</div>`.
 
-**Close button**<br/>
+**Heading** (optional)<br/>
+The heading is the first element within the content element and could be a `<h1>, <h2>, <h3>, <h4>, <h5>` or a `<div class="gds-alert-ribbon__heading">...</div>` depending if the heading should be included in the document heading hirarchy. Additional text should be placed within a `<p>`. It can contain links like `<a>` elements and plain text.
+
+**Close button** (optional)<br/>
 `<button class="close">...</button>` if the alert is dismissible.
 
 **Footer** (optional)<br/>
-If the alert has actions like buttons or links they should be placed inside a `<footer>...</footer>`.
+If the alert has actions like buttons or links they should be placed inside a `<div class="gds-alert-ribbon__footer">...</footer>`.
 
 <Canvas>
   <div>
-    <div role="alert">
+    <div class="gds-alert-ribbon">
       <i>
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -139,8 +142,8 @@ If the alert has actions like buttons or links they should be placed inside a `<
           />
         </svg>
       </i>
-      <div>
-        <h3>Can contain a heading.</h3>
+      <div class="gds-alert-ribbon__content">
+        <div class="gds-alert-ribbon__heading">Can contain a heading.</div>
         <p>
           Body text starts on the same row as heading. A link (optional) always
           ends the message, stand alone or <a href="#">part of the sentence.</a>
@@ -151,7 +154,7 @@ If the alert has actions like buttons or links they should be placed inside a `<
         <i></i>
       </button>
     </div>
-    <div role="alert" class="success">
+    <div class="gds-alert-ribbon success">
       <i>
         <svg
           width="24"
@@ -166,18 +169,18 @@ If the alert has actions like buttons or links they should be placed inside a `<
           />
         </svg>
       </i>
-      <div class="alert-ribbon__content">
-        <h3>Can contain a heading.</h3>
+      <div class="gds-alert-ribbon__content">
+        <div class="gds-alert-ribbon__heading">Can contain a heading.</div>
         <p>
           Body text starts on the same row as heading. A link (optional) always
           ends the message, stand alone or <a href="#">part of the sentence.</a>
         </p>
       </div>
-      <div class="alert-ribbon__footer">
+      <div class="gds-alert-ribbon__footer">
         <button>Button</button>
       </div>
     </div>
-    <div role="alert" class="warning">
+    <div class="gds-alert-ribbon warning">
       <i>
         <svg
           viewBox="0 0 24 24"
@@ -194,8 +197,8 @@ If the alert has actions like buttons or links they should be placed inside a `<
           />
         </svg>
       </i>
-      <div>
-        <h3>Can contain a heading.</h3>
+      <div class="gds-alert-ribbon__content">
+        <div class="gds-alert-ribbon__heading">Can contain a heading.</div>
         <p>
           Body text starts on the same row as heading. A link (optional) always
           ends the message, stand alone or <a href="#">part of the sentence.</a>
@@ -205,7 +208,7 @@ If the alert has actions like buttons or links they should be placed inside a `<
         <button>Button</button>
       </footer>
     </div>
-    <div role="alert" class="danger">
+    <div class="gds-alert-ribbon danger">
       <i>
         <svg
           viewBox="0 0 24 24"
@@ -222,16 +225,16 @@ If the alert has actions like buttons or links they should be placed inside a `<
           />
         </svg>
       </i>
-      <div>
-        <h3>Can contain a heading.</h3>
+      <div class="gds-alert-ribbon__content">
+        <div class="gds-alert-ribbon__heading">Can contain a heading.</div>
         <p>
           Body text starts on the same row as heading. A link (optional) always
           ends the message, stand alone or <a href="#">part of the sentence.</a>
         </p>
       </div>
-      <footer>
+      <div class="gds-alert-ribbon__footer">
         <button>Button</button>
-      </footer>
+      </div>
     </div>
   </div>
 </Canvas>
